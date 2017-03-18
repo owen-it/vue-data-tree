@@ -35,12 +35,12 @@
 </template>
 
 <script>
-import { UNDEFINED, INFINITY, isPlainObject } from 'src/util'
+import { UNDEFINED, INFINITY, isPlainObject } from './util'
 
 const rawTypeRE = /^\[object (\w+)]$/
 
 export default {
-  name: 'DataField',
+  name: 'VueDataTree',
   props: {
     field: Object,
     depth: Number
@@ -126,7 +126,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style scoped>
 .vue-data-tree {
 	user-select: text;
 	font-size: 12px;
