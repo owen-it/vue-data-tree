@@ -1,0 +1,12 @@
+{
+  "name": "vue-data-tree",
+  "version": "0.0.1",
+  "description": "Vue data tree",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Antério Vieira <>anteriovieira@gmail.com",
+  "license": "ISC"
+}
