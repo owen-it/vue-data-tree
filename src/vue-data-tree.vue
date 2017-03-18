@@ -1,5 +1,5 @@
 <template>
-  <div class="data-field">
+  <div class="vue-data-tree">
     <div class="self"
       @click="toggle"
       :style="{ marginLeft: depth * 14 + 'px' }">
@@ -18,12 +18,12 @@
       <span class="value" :class="valueType">{{ formattedValue }}</span>
     </div>
     <div class="children" v-if="expanded && isExpandableType">
-      <data-field
+      <vue-data-tree
         v-for="subField in limitedSubFields"
         :key="subField.key"
         :field="subField"
         :depth="depth + 1">
-      </data-field>
+      </vue-data-tree>
       <span class="more"
         v-if="formattedSubFields.length > limit"
         @click="limit += 10"
@@ -127,107 +127,164 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.data-field
-  user-select text
-  font-size 12px
-  font-family Menlo, Consolas, monospace
-  cursor default
+.vue-data-tree {
+	user-select: text;
+	font-size: 12px;
+	font-family: Menlo, Consolas, monospace;
+	cursor: default;
+}
 
-.self
-  height 20px
-  line-height 20px
-  position relative
-  white-space nowrap
-  padding-left 14px
-  span, div
-    display inline-block
-    vertical-align middle
-  .arrow
-    position absolute
-    top 7px
-    left 0px
-    &.rotated
-      transform rotate(90deg)
-  .key
-    color #881391
-  .colon
-    margin-right .5em
-    position relative
-  .value
-    color #444
-    &.string
-      color #c41a16
-    &.null
-      color #999
-    &.literal
-      color #0033cc
+.self {
+	height: 20px;
+	line-height: 20px;
+	position: relative;
+	white-space: nowrap;
+	padding-left: 14px;
+}
 
-  .type
-    color #FFFFFF
-    padding 3px 6px
-    font-size 10px
-    line-height 10px
-    height 16px
-    border-radius 3px
-    margin 2px 6px
-    position relative
-    background-color #eee
-    &.prop
-      background-color #96afdd
-    &.computed
-      background-color #af90d5
-    &.vuex-getter
-      background-color #5dd5d5
-    &.firebase-binding
-      background-color #ffcc00
-    &.observable
-      background-color #ff9999
+.self span,
+.self div {
+	display: inline-block;
+	vertical-align: middle;
+}
 
-  .meta
-    display none
-    position absolute
-    z-index 999
-    font-size 11px
-    color #444
-    top 0
-    left calc(100% + 5px)
-    width 150px
-    border 1px solid #e3e3e3
-    border-radius 3px
-    padding 8px 12px
-    background-color #FFFFFF
-    line-height 16px
-    box-shadow 0 2px 12px rgba(0,0,0,.1)
-    .key
-      width 65px
-  .meta-field
-    display block
-  &:hover
-    cursor pointer
-    .meta
-      display block
+.self .arrow {
+	position: absolute;
+	top: 7px;
+	left: 0px;
+}
 
-  .app.dark &
-    .key
-      color: #e36eec
-    .value
-      color #bdc6cf
-      &.string
-        color #e33e3a
-      &.null
-        color #999
-      &.literal
-        color #997fff
-    .type
-      color: #242424
-      .meta
-        border 1px solid  lighten($slate, 10%)
-        background-color #242424
-.more
-  cursor pointer
-  display inline-block
-  border-radius 4px
-  padding 0 4px 4px
-  &:hover
-    background-color #eee
+.self .arrow.rotated {
+	transform: rotate(90deg);
+}
+
+.self .key {
+	color: #881391;
+}
+
+.self .colon {
+	margin-right: 0.5em;
+	position: relative;
+}
+
+.self .value {
+	color: #444;
+}
+
+.self .value.string {
+	color: #c41a16;
+}
+
+.self .value.null {
+	color: #999;
+}
+
+.self .value.literal {
+	color: #03c;
+}
+
+.self .type {
+	color: #fff;
+	padding: 3px 6px;
+	font-size: 10px;
+	line-height: 10px;
+	height: 16px;
+	border-radius: 3px;
+	margin: 2px 6px;
+	position: relative;
+	background-color: #eee;
+}
+
+.self .type.prop {
+	background-color: #96afdd;
+}
+
+.self .type.computed {
+	background-color: #af90d5;
+}
+
+.self .type.vuex-getter {
+	background-color: #5dd5d5;
+}
+
+.self .type.firebase-binding {
+	background-color: #fc0;
+}
+
+.self .type.observable {
+	background-color: #f99;
+}
+
+.self .meta {
+	display: none;
+	position: absolute;
+	z-index: 999;
+	font-size: 11px;
+	color: #444;
+	top: 0;
+	left: calc(100% + 5px);
+	width: 150px;
+	border: 1px solid #e3e3e3;
+	border-radius: 3px;
+	padding: 8px 12px;
+	background-color: #fff;
+	line-height: 16px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.self .meta .key {
+	width: 65px;
+}
+
+.self .meta-field {
+	display: block;
+}
+
+.self:hover {
+	cursor: pointer;
+}
+
+.self:hover .meta {
+	display: block;
+}
+
+.app.dark .self .key {
+	color: #e36eec;
+}
+
+.app.dark .self .value {
+	color: #bdc6cf;
+}
+
+.app.dark .self .value.string {
+	color: #e33e3a;
+}
+
+.app.dark .self .value.null {
+	color: #999;
+}
+
+.app.dark .self .value.literal {
+	color: #997fff;
+}
+
+.app.dark .self .type {
+	color: #242424;
+}
+
+.app.dark .self .type .meta {
+	border: 1px solid #3a3a3a;
+	background-color: #242424;
+}
+
+.more {
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 4px;
+	padding: 0 4px 4px;
+}
+
+.more:hover {
+	background-color: #eee;
+}
 </style>
