@@ -1,6 +1,6 @@
 {
   "name": "vue-data-tree",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Vue data tree",
   "main": "index.js",
   "scripts": {
