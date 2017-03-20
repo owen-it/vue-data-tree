@@ -1,13 +1,7 @@
 <template>
   <div class="vue-data-tree">
-    <div class="self"
-      @click="toggle"
-      :style="{ marginLeft: depth * 14 + 'px' }">
-      <span
-        class="arrow right"
-        :class="{ rotated: expanded }"
-        v-show="isExpandableType">
-      </span>
+    <div class="self" @click="toggle" :style="{ marginLeft: depth * 14 + 'px' }">
+      <span class="arrow right" :class="{ rotated: expanded }" v-show="isExpandableType"> </span>
       <span class="key">{{ field.key }}</span>
       <span class="colon">:<div class="meta" v-if="field.meta">
         <div class="meta-field" v-for="(val, key) in field.meta">
@@ -142,6 +136,10 @@ export default {
 	padding-left: 14px;
 }
 
+.children {
+  margin-left: 14px;
+}
+
 .self span,
 .self div {
 	display: inline-block;
@@ -156,6 +154,18 @@ export default {
 
 .self .arrow.rotated {
 	transform: rotate(90deg);
+}
+
+.arrow.right {
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid #444;
+}
+
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
 }
 
 .self .key {
@@ -248,31 +258,31 @@ export default {
 	display: block;
 }
 
-.app.dark .self .key {
+.dark .self .key {
 	color: #e36eec;
 }
 
-.app.dark .self .value {
+.dark .self .value {
 	color: #bdc6cf;
 }
 
-.app.dark .self .value.string {
+.dark .self .value.string {
 	color: #e33e3a;
 }
 
-.app.dark .self .value.null {
+.dark .self .value.null {
 	color: #999;
 }
 
-.app.dark .self .value.literal {
+.dark .self .value.literal {
 	color: #997fff;
 }
 
-.app.dark .self .type {
+.dark .self .type {
 	color: #242424;
 }
 
-.app.dark .self .type .meta {
+.dark .self .type .meta {
 	border: 1px solid #3a3a3a;
 	background-color: #242424;
 }
