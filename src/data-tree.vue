@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-data-tree">
+  <div class="data-tree">
     <div class="self" @click="toggle" :style="{ marginLeft: depth * 14 + 'px' }">
       <span class="arrow right" :class="{ rotated: expanded }" v-show="isExpandableType"> </span>
       <span class="key">{{ field.key }}</span>
@@ -12,12 +12,12 @@
       <span class="value" :class="valueType">{{ formattedValue }}</span>
     </div>
     <div class="children" v-if="expanded && isExpandableType">
-      <vue-data-tree
+      <data-tree
         v-for="subField in limitedSubFields"
         :key="subField.key"
         :field="subField"
         :depth="depth + 1">
-      </vue-data-tree>
+      </data-tree>
       <span class="more"
         v-if="formattedSubFields.length > limit"
         @click="limit += 10"
@@ -34,7 +34,7 @@ import { UNDEFINED, INFINITY, isPlainObject } from './util'
 const rawTypeRE = /^\[object (\w+)]$/
 
 export default {
-  name: 'VueDataTree',
+  name: 'DataTree',
   props: {
     field: Object,
     depth: Number
@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style scoped>
-.vue-data-tree {
+.data-tree {
 	user-select: text;
 	font-size: 12px;
 	font-family: Menlo, Consolas, monospace;

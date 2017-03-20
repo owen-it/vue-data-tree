@@ -1,3 +1,3 @@
-var dataTree = require('./src/vue-data-tree.vue')
+var dataTree = require('./src/index.vue')
 
 module.exports = dataTree
