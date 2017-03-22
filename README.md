@@ -14,7 +14,7 @@ import Vue from 'vue'
 import VueDataTree from 'vue-data-tree'
 
 new Vue({
-  el: '#app,
+  el: '#app',
   // ...
   components: { VueDataTree }
 })
