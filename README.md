@@ -16,13 +16,18 @@ import VueDataTree from 'vue-data-tree'
 new Vue({
   el: '#app',
   // ...
+  data(){
+    return {
+      target: {msg: 'Hello Vuejs!'}
+    }
+  },
   components: { VueDataTree }
 })
 ```
 
 ```html
 <div id="app">
-  <vue-data-tree value="..."></vue-data-tree>
+  <vue-data-tree :value="target"></vue-data-tree>
 </div>
 ```
 
