@@ -8,5 +8,15 @@
   },
   "keywords": [],
   "author": "Antério Vieira <>anteriovieira@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/owen-it/vue-data-tree.git"
+  },
+  "keywords": [
+    "vuejs",
+    "data",
+    "tree",
+    "component"
+  ]
 }
